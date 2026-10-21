@@ -1,0 +1,58 @@
+# SBCLLC USA
+# https://www.sbcusllc.com
+# Machine-readable summary: https://www.sbcusllc.com/llms.txt
+
+User-agent: *
+Allow: /
+
+# Google Search
+User-agent: Googlebot
+Allow: /
+
+# Google Gemini and AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Bing and Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+# OpenAI — ChatGPT search and citations
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl trains models and does not cite pages. Search and answer bots above stay allowed.
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://www.sbcusllc.com/sitemap.xml
