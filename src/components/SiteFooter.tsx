@@ -7,8 +7,8 @@ export function SiteFooter() {
     <footer className="bg-gradient-ink text-ink-foreground">
       <div className="container-page grid gap-10 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <Link to="/" className="inline-block" aria-label="SBCLLC USA home">
-            <BrandMark tone="light" />
+          <Link to="/" className="inline-block rounded-xl bg-white px-3 py-2" aria-label="SBC US LLC home">
+            <BrandMark />
           </Link>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
             Local connect. Global outlook. Tax, finance and compliance for businesses

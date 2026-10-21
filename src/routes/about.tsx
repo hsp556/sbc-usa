@@ -1,8 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Award, Globe2, Heart, Sparkles, Target, Users } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
 import { Reveal } from "@/components/Reveal";
 import { PhotoSlab } from "@/components/PhotoSlab";
+import { team } from "@/data/team";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 import aboutImg from "@/assets/about-team.jpg";
 
@@ -73,6 +74,39 @@ function AboutPage() {
           </Reveal>
         </div>
       </Reveal>
+
+      <section id="team" className="py-14 sm:py-20">
+        <div className="container-page">
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Leadership</span>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">The people behind the practice.</h2>
+            <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+              Senior specialists across transfer pricing, international tax, audit, assurance and practice management.
+            </p>
+          </div>
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((member) => (
+              <li key={member.slug}>
+                <Link
+                  to="/team/$slug"
+                  params={{ slug: member.slug }}
+                  className="group block h-full"
+                >
+                  <img
+                    src={member.photo}
+                    alt=""
+                    width={640}
+                    height={800}
+                    className="aspect-[4/5] w-full object-cover object-top transition duration-300 group-hover:opacity-95"
+                  />
+                  <h3 className="mt-4 text-lg font-semibold leading-snug group-hover:text-primary">{member.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <Reveal as="section" className="py-14 sm:py-20">
         <div className="container-page">

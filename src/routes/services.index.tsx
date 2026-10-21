@@ -2,10 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
 import { Reveal } from "@/components/Reveal";
-import { PhotoSlab } from "@/components/PhotoSlab";
+import { ServiceLinesBoard } from "@/components/ServiceLinesBoard";
 import { services } from "@/data/services";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
-import heroServices from "@/assets/hero-services.jpg";
 
 const SERVICES_TITLE = "Services | Tax, Transfer Pricing & CPA Outsourcing — SBCLLC USA";
 const SERVICES_DESC =
@@ -60,11 +59,7 @@ function ServicesPage() {
           <Reveal direction="right" delay={120}>
             <div className="relative">
               <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-warm opacity-25 blur-2xl" aria-hidden />
-              <PhotoSlab
-                src={heroServices}
-                alt="Glass blocks, a brass scale and copper ring on a navy field"
-                priority
-              />
+              <ServiceLinesBoard />
             </div>
           </Reveal>
         </div>

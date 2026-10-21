@@ -14,6 +14,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as ServicesUsTaxServicesRouteImport } from './routes/services.us-tax-services'
 import { Route as ServicesUsCpaOutsourcingRouteImport } from './routes/services.us-cpa-outsourcing'
 import { Route as ServicesTransferPricingRouteImport } from './routes/services.transfer-pricing'
@@ -46,6 +47,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ServicesRoute,
+} as any)
+const TeamSlugRoute = TeamSlugRouteImport.update({
+  id: '/team/$slug',
+  path: '/team/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesUsTaxServicesRoute = ServicesUsTaxServicesRouteImport.update({
   id: '/us-tax-services',
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/services/transfer-pricing': typeof ServicesTransferPricingRoute
   '/services/us-cpa-outsourcing': typeof ServicesUsCpaOutsourcingRoute
   '/services/us-tax-services': typeof ServicesUsTaxServicesRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/services/transfer-pricing': typeof ServicesTransferPricingRoute
   '/services/us-cpa-outsourcing': typeof ServicesUsCpaOutsourcingRoute
   '/services/us-tax-services': typeof ServicesUsTaxServicesRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/services/transfer-pricing': typeof ServicesTransferPricingRoute
   '/services/us-cpa-outsourcing': typeof ServicesUsCpaOutsourcingRoute
   '/services/us-tax-services': typeof ServicesUsTaxServicesRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/services/transfer-pricing'
     | '/services/us-cpa-outsourcing'
     | '/services/us-tax-services'
+    | '/team/$slug'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/services/transfer-pricing'
     | '/services/us-cpa-outsourcing'
     | '/services/us-tax-services'
+    | '/team/$slug'
     | '/services'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/services/transfer-pricing'
     | '/services/us-cpa-outsourcing'
     | '/services/us-tax-services'
+    | '/team/$slug'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRouteWithChildren
+  TeamSlugRoute: typeof TeamSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/services/'
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
+    }
+    '/team/$slug': {
+      id: '/team/$slug'
+      path: '/team/$slug'
+      fullPath: '/team/$slug'
+      preLoaderRoute: typeof TeamSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/services/us-tax-services': {
       id: '/services/us-tax-services'
@@ -298,6 +318,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRouteWithChildren,
+  TeamSlugRoute: TeamSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,15 +1,13 @@
-import logoInk from "@/assets/sbc-logo-ink.png";
-import logoWhite from "@/assets/sbc-logo-white.png";
+import logo from "@/assets/sbc-us-llc-logo.png";
 
-export function BrandMark({ tone = "ink" }: { tone?: "ink" | "light" }) {
-  const src = tone === "light" ? logoWhite : logoInk;
+export function BrandMark() {
   return (
     <img
-      src={src}
-      alt="SBC. Local connect. Global outlook."
-      width={919}
-      height={319}
-      className="h-12 w-auto md:h-14"
+      src={logo}
+      alt="SBC US LLC. Local connect. Global outlook."
+      width={945}
+      height={372}
+      className="h-16 w-auto md:h-20"
       decoding="async"
     />
   );

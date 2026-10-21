@@ -6,7 +6,6 @@ import { Reveal } from "@/components/Reveal";
 import { CoverageMap } from "@/components/CoverageMap";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 import { services } from "@/data/services";
-import heroGlobe from "@/assets/hero-globe.jpg";
 
 const CONTACT_TITLE = "Contact SBCLLC USA | Tax & Advisory Experts";
 const CONTACT_DESC =
@@ -64,10 +63,7 @@ function ContactPage() {
   return (
     <SiteShell>
       <section className="relative isolate overflow-hidden bg-hero-ink text-white">
-        <div className="absolute inset-0 -z-10" aria-hidden>
-          <img src={heroGlobe} alt="" className="h-full w-full object-cover object-[65%_center] opacity-70" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.08_0.03_255/0.94)] via-[oklch(0.10_0.03_255/0.86)] to-[oklch(0.10_0.03_255/0.72)]" />
-        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.08_0.03_255)] via-[oklch(0.11_0.03_255)] to-[oklch(0.16_0.04_255)]" aria-hidden />
         <div className="container-page grid items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:py-20">
           <Reveal>
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Contact us</span>

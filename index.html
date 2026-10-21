@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SBCLLC USA — Tax, Audit & Advisory for Global Businesses</title>
     <meta name="description" content="SBCLLC USA provides tax, finance and compliance across the US, India and the UAE. 270+ professionals. Independent member of Kreston. Email info@sbcusllc.com." />

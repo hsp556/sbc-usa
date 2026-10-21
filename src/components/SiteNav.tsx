@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
 import { BrandMark } from "@/components/BrandMark";
 
 const links = [
@@ -10,7 +10,30 @@ const links = [
   { to: "/contact", label: "Contact", exact: false },
 ] as const;
 
-const linkClass = "text-base font-semibold leading-none text-white/90 transition hover:text-primary";
+const linkClass = "text-lg font-semibold leading-none text-foreground/80 transition hover:text-primary md:text-xl";
+
+function ThemeToggle() {
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains("dark"));
+
+  function toggle() {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    setDark(next);
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold text-foreground"
+    >
+      {dark ? <Sun className="h-4 w-4" strokeWidth={1.75} /> : <Moon className="h-4 w-4" strokeWidth={1.75} />}
+      <span>{dark ? "Light" : "Dark"}</span>
+    </button>
+  );
+}
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -25,13 +48,13 @@ export function SiteNav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-white/10 bg-[oklch(0.12_0.02_255)] text-white ${
-        scrolled ? "shadow-[0_12px_40px_-24px_oklch(0_0_0/0.8)]" : ""
+      className={`sticky top-0 z-50 border-b border-border bg-background text-foreground ${
+        scrolled ? "shadow-soft" : ""
       }`}
     >
-      <div className="container-page flex h-[5.5rem] items-center gap-8">
-        <Link to="/" className="flex shrink-0 items-center" aria-label="SBCLLC USA home">
-          <BrandMark tone="light" />
+      <div className="container-page flex h-28 items-center gap-8">
+        <Link to="/" className="flex shrink-0 items-center rounded-xl bg-white px-2 py-1" aria-label="SBC US LLC home">
+          <BrandMark />
         </Link>
 
         <nav className="ml-auto hidden items-center gap-8 md:flex">
@@ -40,12 +63,13 @@ export function SiteNav() {
               key={l.to}
               to={l.to}
               className={linkClass}
-              activeProps={{ className: "text-base font-semibold leading-none text-primary" }}
+              activeProps={{ className: "text-lg font-semibold leading-none text-primary md:text-xl" }}
               activeOptions={{ exact: l.exact }}
             >
               {l.label}
             </Link>
           ))}
+          <ThemeToggle />
           <Link
             to="/contact"
             className="inline-flex h-11 items-center gap-2 rounded-full bg-gradient-warm px-5 text-sm font-semibold text-primary-foreground"
@@ -55,24 +79,27 @@ export function SiteNav() {
           </Link>
         </nav>
 
+        <div className="ml-auto flex items-center gap-2 md:hidden">
+          <ThemeToggle />
         <button
-          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
         </button>
+        </div>
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-[oklch(0.12_0.02_255)] md:hidden">
+        <div className="border-t border-border bg-background md:hidden">
           <div className="container-page flex flex-col gap-1 py-4">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base font-semibold text-white/90 hover:bg-white/5"
+                className="rounded-md px-3 py-3 text-lg font-semibold text-foreground/80 hover:bg-muted"
               >
                 {l.label}
               </Link>
