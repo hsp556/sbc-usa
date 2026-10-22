@@ -3,6 +3,10 @@
 export const SITE_URL = "https://www.sbcusllc.com";
 export const SITE_NAME = "SBCLLC USA";
 export const SITE_SLOGAN = "Local connect. Global outlook.";
+export const BRAND_ALIASES = ["SBC US LLC", "SBC USA", "SBC US", "SBCLLC US", "SBCLLC USA", "SBC LLC USA"] as const;
+export const BRAND_KEYWORDS = BRAND_ALIASES.join(", ");
+export const BRAND_DESCRIPTION =
+  "SBC US LLC, also known as SBC USA, SBC US, SBCLLC US and SBCLLC USA, provides tax, finance and compliance across the United States, India and the UAE. 270+ professionals. Independent member of Kreston.";
 export const LOGO_URL = `${SITE_URL}/sbc-logo.png`;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const CONTACT_EMAIL = "info@sbcusllc.com";
@@ -26,26 +30,34 @@ export function seoMeta({
   keywords,
 }: SeoInput) {
   const url = `${SITE_URL}${path}`;
+  const keywordContent = keywords ? `${BRAND_KEYWORDS}, ${keywords}` : BRAND_KEYWORDS;
   const meta = [
     { title },
     { name: "description", content: description },
-    ...(keywords ? [{ name: "keywords", content: keywords }] : []),
+    { name: "keywords", content: keywordContent },
+    { name: "author", content: "SBC US LLC" },
+    { name: "publisher", content: "SBC US LLC" },
+    { name: "application-name", content: "SBC US LLC" },
     { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     { name: "googlebot", content: "index, follow" },
+    { name: "bingbot", content: "index, follow" },
+    { name: "referrer", content: "origin" },
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:url", content: url },
     { property: "og:type", content: type },
-    { property: "og:site_name", content: SITE_NAME },
+    { property: "og:site_name", content: "SBC US LLC" },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: image },
-    { property: "og:image:alt", content: title },
+    { property: "og:image:secure_url", content: image },
+    { property: "og:image:alt", content: `${title} — SBC US LLC` },
 
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: `${title} — SBC US LLC` },
   ];
 
   const links = [
@@ -65,6 +77,10 @@ export function jsonLdScript(data: unknown) {
 }
 
 export const firmFaqs = [
+  {
+    q: "Is SBC US LLC the same as SBC USA, SBC US and SBCLLC USA?",
+    a: "Yes. SBC US LLC is the firm at www.sbcusllc.com. The same practice is also searched as SBC USA, SBC US, SBCLLC US and SBCLLC USA. It provides tax, finance and compliance across the United States, India and the UAE.",
+  },
   {
     q: "What does SBCLLC USA do?",
     a: "SBCLLC USA provides tax, finance and compliance for businesses across the United States, India and the UAE. The work covers US tax filings, transfer pricing, bookkeeping and FP&A, audit support, India GCC setup, business restructuring, and back-office support for US CPA firms.",
@@ -102,17 +118,16 @@ export function faqJsonLd(items: readonly { q: string; a: string }[] = firmFaqs)
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
-  name: "SBCLLC USA",
-  legalName: "SBCLLC USA",
-  alternateName: ["SBCLLC", "SBC LLC USA", "SBC"],
+  name: "SBC US LLC",
+  legalName: "SBC US LLC",
+  alternateName: [...BRAND_ALIASES],
   slogan: SITE_SLOGAN,
   url: SITE_URL,
   logo: LOGO_URL,
   image: DEFAULT_OG_IMAGE,
   email: CONTACT_EMAIL,
   telephone: CONTACT_PHONE,
-  description:
-    "SBCLLC USA provides tax, finance and compliance for businesses across the United States, India and the UAE. The firm has 270+ professionals, serves 350+ multinational clients, and is an independent member of Kreston.",
+  description: BRAND_DESCRIPTION,
   foundingDate: "2017",
   knowsAbout: [
     "US federal and state tax",
@@ -153,11 +168,12 @@ export const organizationJsonLd = {
 export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: SITE_NAME,
+  name: "SBC US LLC",
+  alternateName: [...BRAND_ALIASES],
   url: SITE_URL,
-  description: SITE_SLOGAN,
+  description: BRAND_DESCRIPTION,
   inLanguage: "en",
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL, logo: LOGO_URL },
+  publisher: { "@type": "Organization", name: "SBC US LLC", url: SITE_URL, logo: LOGO_URL },
 };
 
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {

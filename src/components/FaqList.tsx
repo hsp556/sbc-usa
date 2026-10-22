@@ -9,7 +9,7 @@ export function FaqList() {
           Questions clients ask SBCLLC USA
         </h2>
         <p className="mt-4 max-w-2xl text-base text-white/70">
-          SBCLLC USA is a tax, finance and compliance firm for businesses in the United States, India and the UAE. Local connect. Global outlook.
+          SBC US LLC — also SBC USA, SBC US, SBCLLC US and SBCLLC USA — is a tax, finance and compliance firm for businesses in the United States, India and the UAE. Local connect. Global outlook.
         </p>
         <dl className="night-card mt-10 divide-y divide-white/10 overflow-hidden rounded-3xl">
           {firmFaqs.map((item) => (

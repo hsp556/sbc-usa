@@ -11,8 +11,9 @@ export function SiteFooter() {
             <BrandMark />
           </Link>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
-            Local connect. Global outlook. Tax, finance and compliance for businesses
-            across the US, India and the UAE. An independent member firm of Kreston.
+            SBC US LLC, also known as SBC USA, SBC US, SBCLLC US and SBCLLC USA.
+            Local connect. Global outlook. Tax, finance and compliance across the US, India and the UAE.
+            An independent member firm of Kreston.
           </p>
         </div>
         <div>

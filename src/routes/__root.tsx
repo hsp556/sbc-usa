@@ -65,11 +65,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE, organizationJsonLd, websiteJsonLd, jsonLdScript } from "@/lib/seo";
+import { SITE_URL, DEFAULT_OG_IMAGE, BRAND_DESCRIPTION, BRAND_KEYWORDS, organizationJsonLd, websiteJsonLd, jsonLdScript } from "@/lib/seo";
 
-const ROOT_TITLE = "SBCLLC USA — Tax, Audit & Advisory for Global Businesses";
-const ROOT_DESC =
-  "SBCLLC USA provides tax, finance and compliance across the US, India and the UAE. 270+ professionals. Independent member of Kreston.";
+const ROOT_TITLE = "SBC US LLC | SBC USA, SBC US & SBCLLC USA — Tax & Advisory";
+const ROOT_DESC = BRAND_DESCRIPTION;
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -80,13 +79,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "format-detection", content: "telephone=no" },
       { title: ROOT_TITLE },
       { name: "description", content: ROOT_DESC },
-      { name: "author", content: SITE_NAME },
-      { name: "publisher", content: SITE_NAME },
-      { name: "application-name", content: SITE_NAME },
+      { name: "author", content: "SBC US LLC" },
+      { name: "publisher", content: "SBC US LLC" },
+      { name: "application-name", content: "SBC US LLC" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { name: "googlebot", content: "index, follow" },
-      { name: "keywords", content: "SBCLLC USA, US tax services, transfer pricing, CPA outsourcing, bookkeeping, FP&A, GCC India setup, business restructuring, audit, advisory, India, UAE, USA" },
-      { property: "og:site_name", content: SITE_NAME },
+      { name: "bingbot", content: "index, follow" },
+      { name: "keywords", content: BRAND_KEYWORDS },
+      { property: "og:site_name", content: "SBC US LLC" },
       { property: "og:locale", content: "en_US" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: ROOT_TITLE },

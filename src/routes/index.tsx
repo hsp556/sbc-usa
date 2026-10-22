@@ -6,12 +6,11 @@ import { PhotoSlab } from "@/components/PhotoSlab";
 import { HomeHero } from "@/components/HomeHero";
 import { services } from "@/data/services";
 import { FaqList } from "@/components/FaqList";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { BRAND_ALIASES, BRAND_DESCRIPTION, breadcrumbJsonLd, faqJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 import aboutImg from "@/assets/about-team.jpg";
 
-const HOME_TITLE = "SBCLLC USA | Global Tax, Audit & Advisory Consulting";
-const HOME_DESC =
-  "SBCLLC USA offers US tax, audit, transfer pricing, FP&A and CPA outsourcing for businesses across India, UAE and the USA.";
+const HOME_TITLE = "SBC US LLC | SBC USA, SBC US & SBCLLC USA — Tax & Advisory";
+const HOME_DESC = BRAND_DESCRIPTION;
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -20,7 +19,7 @@ export const Route = createFileRoute("/")({
       description: HOME_DESC,
       path: "/",
       keywords:
-        "SBCLLC USA, US tax services, transfer pricing, CPA outsourcing, bookkeeping, FP&A, GCC India setup, business restructuring, audit, advisory, India, UAE, USA",
+        "US tax services, transfer pricing, CPA outsourcing, bookkeeping, FP&A, GCC India setup, business restructuring, audit, advisory, India, UAE, USA",
     });
     return {
       ...seo,
@@ -28,7 +27,8 @@ export const Route = createFileRoute("/")({
         jsonLdScript({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          name: SITE_NAME,
+          name: "SBC US LLC",
+          alternateName: [...BRAND_ALIASES],
           url: SITE_URL,
           image: `${SITE_URL}/og-image.jpg`,
           telephone: "+1-210-859-3259",
