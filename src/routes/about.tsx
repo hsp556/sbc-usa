@@ -7,9 +7,9 @@ import { team } from "@/data/team";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 import aboutImg from "@/assets/about-team.jpg";
 
-const ABOUT_TITLE = "About SBCLLC USA | Consulting Across India, UAE & USA";
+const ABOUT_TITLE = "About SBC US LLC | Consulting Across India, UAE & USA";
 const ABOUT_DESC =
-  "Learn about SBCLLC USA — 270+ professionals across the US, India and the UAE, and an independent member firm of Kreston.";
+  "Learn about SBC US LLC — 270+ professionals across the US, India and the UAE, and an independent member firm of Kreston.";
 
 export const Route = createFileRoute("/about")({
   head: () => {
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
       title: ABOUT_TITLE,
       description: ABOUT_DESC,
       path: "/about",
-      keywords: "About SBCLLC USA, consulting firm India UAE USA, tax advisory, audit firm, business consultants",
+      keywords: "About SBC US LLC, consulting firm India UAE USA, tax advisory, audit firm, business consultants",
     });
     return {
       ...seo,
@@ -62,15 +62,15 @@ function AboutPage() {
       <Reveal as="section" className="bg-gradient-soft py-14 sm:py-20">
         <div className="container-page grid gap-10 md:grid-cols-2 md:items-center md:gap-12">
           <Reveal direction="left">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">About SBCLLC USA</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">About SBC US LLC</span>
             <h1 className="mt-3 text-3xl font-bold sm:text-4xl md:text-5xl">Built on knowledge. Driven by strategy. Designed for growth.</h1>
             <p className="mt-5 text-base text-muted-foreground sm:text-lg">
               We handle tax, finance and compliance for businesses across the US, India and the UAE.
-              SBCLLC USA is an independent member firm of Kreston.
+              SBC US LLC is an independent member firm of Kreston.
             </p>
           </Reveal>
           <Reveal direction="right" delay={150}>
-            <PhotoSlab src={aboutImg} alt="SBCLLC USA advisors reviewing plans above a city skyline" width={1280} height={960} />
+            <PhotoSlab src={aboutImg} alt="SBC US LLC advisors reviewing plans above a city skyline" width={1280} height={960} />
           </Reveal>
         </div>
       </Reveal>

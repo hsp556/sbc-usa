@@ -6,14 +6,16 @@ import {
   Landmark, ArrowRight, CheckCircle2, Star,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-cpa.jpg";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Outsourcing for US CPA Firms | SBCLLC USA";
+const TITLE = "Outsourcing for US CPA Firms | SBC US LLC";
 const DESC =
   "Audit, ICFR, IPO readiness, ESG, bookkeeping & FP&A outsourcing for US CPA firms — Big-4 quality at scale.";
 
@@ -34,8 +36,9 @@ export const Route = createFileRoute("/services/us-cpa-outsourcing")({
           name: "Outsourcing for US CPA Firms",
           description: DESC,
           url: `${SITE_URL}/services/us-cpa-outsourcing`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["us-cpa-outsourcing"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -349,6 +352,8 @@ function CPAPage() {
           </Reveal>
         </div>
       </section>
+
+      <FaqList items={serviceFaqs["us-cpa-outsourcing"]} title="US CPA outsourcing: common questions" intro="" />
 
       <ServiceCTA
         title="Ready to Scale Your US CPA Firm Globally?"

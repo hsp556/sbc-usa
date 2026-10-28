@@ -6,14 +6,16 @@ import {
   Zap, TrendingUp, Wallet, BookOpen, CheckCircle2, Award,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-gcc.jpg";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Set Up Your GCC in India | SBCLLC USA";
+const TITLE = "Set Up Your GCC in India | SBC US LLC";
 const DESC =
   "End-to-end GCC setup in India for US enterprises — strategy, entity, real estate, talent, finance and operations.";
 
@@ -35,8 +37,9 @@ export const Route = createFileRoute("/services/gcc-india-setup")({
           name: "GCC India Setup",
           description: DESC,
           url: `${SITE_URL}/services/gcc-india-setup`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["gcc-india-setup"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -304,7 +307,7 @@ function GCCPage() {
       <section className="bg-muted py-16 sm:py-20 md:py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeading title="Why partner with SBCLLC USA?" align="center" />
+            <SectionHeading title="Why partner with SBC US LLC?" align="center" />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {partners.map((p, i) => (
@@ -320,6 +323,8 @@ function GCCPage() {
           </div>
         </div>
       </section>
+
+      <FaqList items={serviceFaqs["gcc-india-setup"]} title="GCC setup in India: common questions" intro="" />
 
       <ServiceCTA
         variant="ink"

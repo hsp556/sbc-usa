@@ -2,20 +2,20 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
 import { getTeamMember, type TeamMember } from "@/data/team";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/team/$slug")({
   head: ({ params }) => {
     const member = getTeamMember(params.slug);
     if (!member) {
-      return { meta: [{ title: "Team — SBCLLC USA" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Team — SBC US LLC" }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${member.name} | ${member.role} — SBCLLC USA`;
+    const title = `${member.name} | ${member.role} — SBC US LLC`;
     const seo = seoMeta({
       title,
       description: member.summary,
       path: `/team/${member.slug}`,
-      keywords: `${member.name}, ${member.role}, SBCLLC USA, ${member.practiceAreas}`,
+      keywords: `${member.name}, ${member.role}, SBC US LLC, ${member.practiceAreas}`,
     });
     return {
       ...seo,
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/team/$slug")({
           telephone: member.phone,
           image: `${SITE_URL}${member.photo}`,
           url: `${SITE_URL}/team/${member.slug}`,
-          worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          worksFor: orgRef,
         }),
         jsonLdScript(
           breadcrumbJsonLd([

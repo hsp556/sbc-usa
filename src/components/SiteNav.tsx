@@ -13,7 +13,10 @@ const links = [
 const linkClass = "text-lg font-semibold leading-none text-foreground/80 transition hover:text-primary md:text-xl";
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(() => document.documentElement.classList.contains("dark"));
+  // Guarded so the component can render during build-time prerendering (no DOM).
+  const [dark, setDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
+  );
 
   function toggle() {
     const next = !document.documentElement.classList.contains("dark");

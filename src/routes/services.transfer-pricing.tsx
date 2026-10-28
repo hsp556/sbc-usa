@@ -6,14 +6,16 @@ import {
   Zap, ShieldCheck, Network, CheckCircle2, Trophy,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-tp.jpg";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Transfer Pricing — US Practice | SBCLLC USA";
+const TITLE = "Transfer Pricing — US Practice | SBC US LLC";
 const DESC =
   "IRC §482 compliance, BEPS advisory and dispute resolution for US-incorporated entities with overseas operations.";
 
@@ -35,8 +37,9 @@ export const Route = createFileRoute("/services/transfer-pricing")({
           name: "Transfer Pricing — US Practice",
           description: DESC,
           url: `${SITE_URL}/services/transfer-pricing`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["transfer-pricing"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -263,7 +266,7 @@ function TPPage() {
       <section className="py-16 sm:py-20 md:py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeading title="Why SBCLLC USA Transfer Pricing?" align="center" />
+            <SectionHeading title="Why SBC US LLC Transfer Pricing?" align="center" />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {why.map((w, i) => (
@@ -275,10 +278,12 @@ function TPPage() {
         </div>
       </section>
 
+      <FaqList items={serviceFaqs["transfer-pricing"]} title="Transfer pricing: common questions" intro="" />
+
       <ServiceCTA
         variant="ink"
         title="Protect your intercompany transactions from day one."
-        body="Whether you're establishing your first intercompany arrangement, preparing for an IRS examination, or seeking APA certainty — SBCLLC USA has you covered."
+        body="Whether you're establishing your first intercompany arrangement, preparing for an IRS examination, or seeking APA certainty — SBC US LLC has you covered."
         ctaText="Schedule a Free TP Assessment"
       />
     </SiteShell>

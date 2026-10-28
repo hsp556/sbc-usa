@@ -6,11 +6,13 @@ import { PhotoSlab } from "@/components/PhotoSlab";
 import { HomeHero } from "@/components/HomeHero";
 import { services } from "@/data/services";
 import { FaqList } from "@/components/FaqList";
-import { BRAND_ALIASES, BRAND_DESCRIPTION, breadcrumbJsonLd, faqJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
+import { BRAND_ALIASES, breadcrumbJsonLd, faqJsonLd, jsonLdScript, ORG_ID, seoMeta, SITE_URL } from "@/lib/seo";
 import aboutImg from "@/assets/about-team.jpg";
 
 const HOME_TITLE = "SBC US LLC | SBC USA, SBC US & SBCLLC USA — Tax & Advisory";
-const HOME_DESC = BRAND_DESCRIPTION;
+// Kept under ~160 chars so it isn't truncated in results; the full BRAND_DESCRIPTION stays in JSON-LD.
+const HOME_DESC =
+  "SBC US LLC (also SBC USA, SBCLLC USA) provides tax, transfer pricing, CPA outsourcing and compliance across the US, India and the UAE. Kreston member.";
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -27,6 +29,7 @@ export const Route = createFileRoute("/")({
         jsonLdScript({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": ORG_ID,
           name: "SBC US LLC",
           alternateName: [...BRAND_ALIASES],
           url: SITE_URL,
@@ -162,7 +165,7 @@ function HomePage() {
         <div className="container-page relative grid items-center gap-10 md:grid-cols-2 md:gap-14">
           <Reveal direction="left" className="relative">
             <div className="absolute -inset-6 -z-10 rounded-3xl bg-gradient-warm opacity-25 blur-2xl animate-blob" aria-hidden />
-            <PhotoSlab src={aboutImg} alt="SBCLLC USA advisors reviewing plans above a city skyline" width={1280} height={960} />
+            <PhotoSlab src={aboutImg} alt="SBC US LLC advisors reviewing plans above a city skyline" width={1280} height={960} />
           </Reveal>
           <Reveal direction="right" delay={120}>
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">Who we are</span>

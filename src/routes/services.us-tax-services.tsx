@@ -6,14 +6,16 @@ import {
   ClipboardList, Scale, BookOpen, Users, BarChart3, Repeat, Search, Phone,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA, PillLabel,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-us-tax.jpg";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "US Tax Services for Global Entities | SBCLLC USA";
+const TITLE = "US Tax Services for Global Entities | SBC US LLC";
 const DESC =
   "Federal, state and international US tax compliance for US-incorporated entities with overseas operations — including IRC §482 transfer pricing.";
 
@@ -36,9 +38,10 @@ export const Route = createFileRoute("/services/us-tax-services")({
           name: "US Tax Services for Global Entities",
           description: DESC,
           url: `${SITE_URL}/services/us-tax-services`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
           areaServed: ["United States", "India", "United Arab Emirates"],
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["us-tax-services"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -265,7 +268,7 @@ function USTaxPage() {
       <section className="bg-muted py-16 sm:py-20 md:py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeading title="Why SBCLLC USA for US Tax?" align="center" />
+            <SectionHeading title="Why SBC US LLC for US Tax?" align="center" />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {whyUs.map(({ icon: Icon, t }, i) => (
@@ -286,6 +289,8 @@ function USTaxPage() {
           </Reveal>
         </div>
       </section>
+
+      <FaqList items={serviceFaqs["us-tax-services"]} title="US tax services: common questions" intro="" />
 
       <ServiceCTA
         title="Ready for Complete US Tax Compliance?"

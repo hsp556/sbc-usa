@@ -6,9 +6,9 @@ import { ServiceLinesBoard } from "@/components/ServiceLinesBoard";
 import { services } from "@/data/services";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 
-const SERVICES_TITLE = "Services | Tax, Transfer Pricing & CPA Outsourcing — SBCLLC USA";
+const SERVICES_TITLE = "Services | Tax, Transfer Pricing & CPA Outsourcing — SBC US LLC";
 const SERVICES_DESC =
-  "Explore SBCLLC USA services: US federal & state tax, business restructuring, GCC India setup, US CPA outsourcing, bookkeeping & FP&A, and transfer pricing.";
+  "Explore SBC US LLC services: US federal & state tax, business restructuring, GCC India setup, US CPA outsourcing, bookkeeping & FP&A, and transfer pricing.";
 
 export const Route = createFileRoute("/services/")({
   head: () => {

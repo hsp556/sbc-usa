@@ -1,7 +1,7 @@
-// Centralized SEO helpers for SBCLLC USA
+// Centralized SEO helpers for SBC US LLC
 
 export const SITE_URL = "https://www.sbcusllc.com";
-export const SITE_NAME = "SBCLLC USA";
+export const SITE_NAME = "SBC US LLC";
 export const SITE_SLOGAN = "Local connect. Global outlook.";
 export const BRAND_ALIASES = ["SBC US LLC", "SBC USA", "SBC US", "SBCLLC US", "SBCLLC USA", "SBC LLC USA"] as const;
 export const BRAND_KEYWORDS = BRAND_ALIASES.join(", ");
@@ -11,6 +11,9 @@ export const LOGO_URL = `${SITE_URL}/sbc-logo.png`;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const CONTACT_EMAIL = "info@sbcusllc.com";
 export const CONTACT_PHONE = "+1-210-859-3259";
+// Stable JSON-LD node id so every page's Service/Person/WebSite points at one firm entity.
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const orgRef = { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: SITE_URL };
 
 export type SeoInput = {
   title: string;
@@ -51,13 +54,13 @@ export function seoMeta({
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: image },
     { property: "og:image:secure_url", content: image },
-    { property: "og:image:alt", content: `${title} — SBC US LLC` },
+    { property: "og:image:alt", content: title },
 
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: image },
-    { name: "twitter:image:alt", content: `${title} — SBC US LLC` },
+    { name: "twitter:image:alt", content: title },
   ];
 
   const links = [
@@ -82,23 +85,23 @@ export const firmFaqs = [
     a: "Yes. SBC US LLC is the firm at www.sbcusllc.com. The same practice is also searched as SBC USA, SBC US, SBCLLC US and SBCLLC USA. It provides tax, finance and compliance across the United States, India and the UAE.",
   },
   {
-    q: "What does SBCLLC USA do?",
-    a: "SBCLLC USA provides tax, finance and compliance for businesses across the United States, India and the UAE. The work covers US tax filings, transfer pricing, bookkeeping and FP&A, audit support, India GCC setup, business restructuring, and back-office support for US CPA firms.",
+    q: "What does SBC US LLC do?",
+    a: "SBC US LLC provides tax, finance and compliance for businesses across the United States, India and the UAE. The work covers US tax filings, transfer pricing, bookkeeping and FP&A, audit support, India GCC setup, business restructuring, and back-office support for US CPA firms.",
   },
   {
-    q: "Where does SBCLLC USA operate?",
-    a: "SBCLLC USA operates in three countries: the United States, India and the United Arab Emirates, including Dubai. Teams handle US–India corridor compliance and cross-border filings from that footprint.",
+    q: "Where does SBC US LLC operate?",
+    a: "SBC US LLC operates in three countries: the United States, India and the United Arab Emirates, including Dubai. Teams handle US–India corridor compliance and cross-border filings from that footprint.",
   },
   {
-    q: "How large is SBCLLC USA?",
-    a: "SBCLLC USA has 270+ professionals and serves 350+ multinational clients. The firm handles 88 global applicable compliances for groups with US and India operations.",
+    q: "How large is SBC US LLC?",
+    a: "SBC US LLC has 270+ professionals and serves 350+ multinational clients. The firm handles 88 global applicable compliances for groups with US and India operations.",
   },
   {
-    q: "Is SBCLLC USA part of a professional network?",
-    a: "Yes. SBCLLC USA is an independent member firm of Kreston.",
+    q: "Is SBC US LLC part of a professional network?",
+    a: "Yes. SBC US LLC is an independent member firm of Kreston.",
   },
   {
-    q: "How do I contact SBCLLC USA?",
+    q: "How do I contact SBC US LLC?",
     a: "Email info@sbcusllc.com or call +1 (210) 859-3259. A senior advisor replies within 24 hours on business days. Office hours are Monday to Friday, 9:00 AM to 6:30 PM IST.",
   },
 ] as const;
@@ -118,6 +121,7 @@ export function faqJsonLd(items: readonly { q: string; a: string }[] = firmFaqs)
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
+  "@id": ORG_ID,
   name: "SBC US LLC",
   legalName: "SBC US LLC",
   alternateName: [...BRAND_ALIASES],
@@ -173,7 +177,7 @@ export const websiteJsonLd = {
   url: SITE_URL,
   description: BRAND_DESCRIPTION,
   inLanguage: "en",
-  publisher: { "@type": "Organization", name: "SBC US LLC", url: SITE_URL, logo: LOGO_URL },
+  publisher: { ...orgRef, logo: LOGO_URL },
 };
 
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {

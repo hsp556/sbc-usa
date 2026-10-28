@@ -7,15 +7,17 @@ import {
   ArrowRight, FileBarChart, Wallet,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-bookkeeping.jpg";
 import { Link } from "@tanstack/react-router";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Bookkeeping & FP&A for US SMEs | SBCLLC USA";
+const TITLE = "Bookkeeping & FP&A for US SMEs | SBC US LLC";
 const DESC =
   "Bookkeeping, FP&A and audit support for US small and mid-sized businesses — without the cost of a full-time finance team.";
 
@@ -36,8 +38,9 @@ export const Route = createFileRoute("/services/bookkeeping-fpa")({
           name: "Bookkeeping & FP&A for US SMEs",
           description: DESC,
           url: `${SITE_URL}/services/bookkeeping-fpa`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["bookkeeping-fpa"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -254,7 +257,7 @@ function BookkeepingPage() {
       <section className="bg-muted py-16 sm:py-20 md:py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeading title="Why SBCLLC USA Advisory?" align="center" />
+            <SectionHeading title="Why SBC US LLC Advisory?" align="center" />
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {why.map((w, i) => (
@@ -290,6 +293,8 @@ function BookkeepingPage() {
           </div>
         </div>
       </section>
+
+      <FaqList items={serviceFaqs["bookkeeping-fpa"]} title="Bookkeeping & FP&A: common questions" intro="" />
 
       <ServiceCTA
         title="Ready to elevate your financial operations?"

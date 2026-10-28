@@ -3,21 +3,21 @@ import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
 import { Reveal } from "@/components/Reveal";
 import { getService, services, type Service } from "@/data/services";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/$slug")({
   head: ({ params }) => {
     const svc = getService(params.slug);
     if (!svc) {
-      return { meta: [{ title: "Service — SBCLLC USA" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Service — SBC US LLC" }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${svc.title} | SBCLLC USA`;
+    const title = `${svc.title} | SBC US LLC`;
     const description = svc.short;
     const seo = seoMeta({
       title,
       description,
       path: `/services/${svc.slug}`,
-      keywords: `${svc.title}, ${svc.tagline}, SBCLLC USA, US tax, advisory, India UAE USA`,
+      keywords: `${svc.title}, ${svc.tagline}, SBC US LLC, US tax, advisory, India UAE USA`,
     });
     return {
       ...seo,
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/services/$slug")({
           serviceType: svc.tagline,
           description: svc.hero,
           url: `${SITE_URL}/services/${svc.slug}`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
           areaServed: ["United States", "India", "United Arab Emirates"],
           hasOfferCatalog: {
             "@type": "OfferCatalog",

@@ -5,14 +5,16 @@ import {
   CheckCircle2, X,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
+import { FaqList } from "@/components/FaqList";
+import { serviceFaqs } from "@/data/service-faqs";
 import { Reveal } from "@/components/Reveal";
 import {
   ServiceHero, SectionHeading, FeatureCard, IconBadge, ServiceCTA, PillLabel,
 } from "@/components/service/ServiceBits";
 import heroImg from "@/assets/service-restructuring.jpg";
-import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, orgRef, seoMeta, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Business Restructuring for US Companies | SBCLLC USA";
+const TITLE = "Business Restructuring for US Companies | SBC US LLC";
 const DESC =
   "Cross-border advisory, transfer pricing, multi-entity bookkeeping and ERP for US companies with global operations.";
 
@@ -34,8 +36,9 @@ export const Route = createFileRoute("/services/business-restructuring")({
           name: "Business Restructuring for US Companies",
           description: DESC,
           url: `${SITE_URL}/services/business-restructuring`,
-          provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          provider: orgRef,
         }),
+        jsonLdScript(faqJsonLd(serviceFaqs["business-restructuring"])),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -293,6 +296,8 @@ function RestructuringPage() {
           </div>
         </div>
       </section>
+
+      <FaqList items={serviceFaqs["business-restructuring"]} title="Business restructuring: common questions" intro="" />
 
       <ServiceCTA
         eyebrow="Three Steps"

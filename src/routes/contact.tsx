@@ -7,9 +7,9 @@ import { CoverageMap } from "@/components/CoverageMap";
 import { breadcrumbJsonLd, jsonLdScript, seoMeta, SITE_URL } from "@/lib/seo";
 import { services } from "@/data/services";
 
-const CONTACT_TITLE = "Contact SBCLLC USA | Tax & Advisory Experts";
+const CONTACT_TITLE = "Contact SBC US LLC | Tax & Advisory Experts";
 const CONTACT_DESC =
-  "Talk to an SBCLLC USA senior advisor about US tax, transfer pricing, audit, FP&A or CPA outsourcing. We respond within 24 hours.";
+  "Talk to an SBC US LLC senior advisor about US tax, transfer pricing, audit, FP&A or CPA outsourcing. We respond within 24 hours.";
 
 export const Route = createFileRoute("/contact")({
   head: () => {
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/contact")({
       title: CONTACT_TITLE,
       description: CONTACT_DESC,
       path: "/contact",
-      keywords: "Contact SBCLLC USA, business consulting contact, tax advisor India UAE USA",
+      keywords: "Contact SBC US LLC, business consulting contact, tax advisor India UAE USA",
     });
     return {
       ...seo,
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/contact")({
           description: CONTACT_DESC,
           mainEntity: {
             "@type": "Organization",
-            name: "SBCLLC USA",
+            name: "SBC US LLC",
             url: SITE_URL,
             email: "info@sbcusllc.com",
             telephone: "+1-210-859-3259",
