@@ -5,8 +5,8 @@ export function BrandMark() {
     <img
       src={logo}
       alt="SBC US LLC. Local connect. Global outlook."
-      width={945}
-      height={372}
+      width={1080}
+      height={472}
       className="h-16 w-auto md:h-20"
       decoding="async"
     />
