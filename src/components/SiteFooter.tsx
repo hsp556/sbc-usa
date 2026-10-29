@@ -1,6 +1,23 @@
 import { Link } from "@tanstack/react-router";
-import { Globe, Mail, Phone, MapPin } from "lucide-react";
+import { Globe, Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
+import type { SVGProps } from "react";
 import { BrandMark } from "@/components/BrandMark";
+import { SOCIAL_LINKS } from "@/lib/seo";
+
+// lucide only ships the old Twitter bird, so the X mark is inlined.
+function XLogo(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+const socials = [
+  { href: SOCIAL_LINKS.linkedin, label: "SBC US LLC on LinkedIn", Icon: Linkedin },
+  { href: SOCIAL_LINKS.instagram, label: "SBC US LLC on Instagram", Icon: Instagram },
+  { href: SOCIAL_LINKS.x, label: "SBC US LLC on X (Twitter)", Icon: XLogo },
+];
 
 export function SiteFooter() {
   return (
@@ -15,6 +32,22 @@ export function SiteFooter() {
             Local connect. Global outlook. Tax, finance and compliance across the US, India and the UAE.
             An independent member firm of Kreston.
           </p>
+          <ul className="mt-6 flex gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-secondary hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+                >
+                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         <div>
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">Explore</h4>

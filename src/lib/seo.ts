@@ -11,6 +11,11 @@ export const LOGO_URL = `${SITE_URL}/sbc-logo.png`;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const CONTACT_EMAIL = "info@sbcusllc.com";
 export const CONTACT_PHONE = "+1-210-859-3259";
+export const SOCIAL_LINKS = {
+  linkedin: "https://www.linkedin.com/company/sbc-us-llc/",
+  instagram: "https://www.instagram.com/steadfast_global/",
+  x: "https://x.com/sbcllp",
+} as const;
 // Stable JSON-LD node id so every page's Service/Person/WebSite points at one firm entity.
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const orgRef = { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: SITE_URL };
@@ -132,6 +137,7 @@ export const organizationJsonLd = {
   email: CONTACT_EMAIL,
   telephone: CONTACT_PHONE,
   description: BRAND_DESCRIPTION,
+  sameAs: Object.values(SOCIAL_LINKS),
   foundingDate: "2017",
   knowsAbout: [
     "US federal and state tax",
